@@ -9,14 +9,13 @@ import { Router } from '@angular/router';
 })
 export class NewsPage implements OnInit {
 
-  googleNewsSA: string = 'top-headlines?sources=google-news-sa';
-  BBCNews: string = 'top-headlines?sources=bbc-news'
+  generalNews: string = 'country=us'
   data?: any;
 
   constructor(private newsService: NewsService, private router: Router) { }
 
   ngOnInit() {
-    this.newsService.getData(this.BBCNews).subscribe(data => {
+    this.newsService.getData(this.generalNews).subscribe(data => {
       this.data = data;
     });
   }

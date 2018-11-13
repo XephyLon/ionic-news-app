@@ -11,6 +11,7 @@
   <ion-card>
     <ion-img [src]="currentArticle.urlToImage"></ion-img>
     <ion-card-header>
+      <ion-card-subtitle>{{currentArticle.publishedAt | date:'medium'}}</ion-card-subtitle>
       <ion-card-title>{{currentArticle.title}}</ion-card-title>
     </ion-card-header>
     <ion-card-content>

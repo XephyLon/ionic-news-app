@@ -15,6 +15,13 @@ export class NewsService {
   constructor(private http: HttpClient) { }
 
   getData(url: string) {
-    return this.http.get(API_URL + url + '&apiKey=' + API_KEY);
+    return this.http.get(API_URL + "everything?" + url + '&apiKey=' + API_KEY);
+  }
+
+  getTitle(articles: Array<Object>, title: Array<string>): Promise<string[]> {
+    for( let article of articles) {
+      title.push(article['title'])
+    }
+    return Promise.resolve(title)
   }
 }
