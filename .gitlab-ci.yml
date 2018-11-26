@@ -11,8 +11,12 @@ pages:
   - npm install -g ionic cordova
   - npm install
   - ionic build --prod
+  - rmdir public
+  - mkdir public
+  - mv -v www/* 
   artifacts:
     paths:
-    - www
+    - public
   only:
+  - master
   - search-autocomplete
