@@ -18,10 +18,7 @@ export class NewsService {
     return this.http.get(API_URL + "everything?" + url + '&apiKey=' + API_KEY);
   }
 
-  getTitle(articles: Array<Object>, title: Array<string>): Promise<string[]> {
-    for( let article of articles) {
-      title.push(article['title'])
-    }
-    return Promise.resolve(title)
+  getTitle(articles: Array<Object>): Promise<Object[]> {
+    return Promise.resolve(articles)
   }
 }

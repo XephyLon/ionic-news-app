@@ -10,9 +10,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
+import { AutoCompleteComponent } from './auto-complete/auto-complete.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, AutoCompleteComponent],
   entryComponents: [],
   imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, HttpClientModule],
   providers: [

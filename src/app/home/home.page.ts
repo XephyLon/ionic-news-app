@@ -13,8 +13,8 @@ export class HomePage implements OnInit {
   generalNews: string = `q=${this.mySearch}&language=en&sortBy=publishedAt`
   data?: any;
   articles: Array<Object> = []
-  title: Array<string> = []
-  query: Array<string> = this.title
+  autocomplete: Array<string> = []
+  query: Array<string> = []
 
   constructor(private newsService: NewsService, private router: Router) {
     this.InitializeItems()
@@ -24,8 +24,9 @@ export class HomePage implements OnInit {
     this.newsService.getData(this.generalNews).subscribe(data => {
       this.data = data;
       this.articles = [...data["articles"]]
-      this.newsService.getTitle(this.articles, this.title)
-        .then(title => this.title = title)
+      for( let article of this.articles) {
+        this.autocomplete.push(article['title'])
+      }
     });
   }
 
@@ -34,11 +35,11 @@ export class HomePage implements OnInit {
     this.router.navigate(['/news-single']);
   }
   InitializeItems() {
-    this.title
+    this.autocomplete
   }
 
   getItems(event) {
-    this.query = this.title
+    this.query = this.autocomplete
 
     const val = event.target.value
     if (val && val.trim() != '') {
@@ -46,6 +47,5 @@ export class HomePage implements OnInit {
         return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
     }
-    console.log(this.query);
   }
 }
