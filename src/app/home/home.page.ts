@@ -10,11 +10,11 @@ import { Component, Input, OnInit } from '@angular/core';
 export class HomePage implements OnInit {
   @Input() public mySearch: string;
 
-  generalNews: string = `q=${this.mySearch}&language=en&sortBy=publishedAt`
+  generalNews: string = `q=-ش&language=en&sortBy=publishedAt`
   data?: any;
   articles: Array<Object> = []
-  autocomplete: Array<string> = []
-  query: Array<string> = []
+  autocomplete: Array<Object> = []
+  query: Array<Object> = []
 
   constructor(private newsService: NewsService, private router: Router) {
     this.InitializeItems()
@@ -25,7 +25,7 @@ export class HomePage implements OnInit {
       this.data = data;
       this.articles = [...data["articles"]]
       for( let article of this.articles) {
-        this.autocomplete.push(article['title'])
+        this.autocomplete.push(article)
       }
     });
   }
@@ -44,8 +44,11 @@ export class HomePage implements OnInit {
     const val = event.target.value
     if (val && val.trim() != '') {
       this.query = this.query.filter((item) => {
-        return (item.toLowerCase().indexOf(val.toLowerCase()) > -1);
+        return (item.title.toLowerCase().indexOf(val.toLowerCase()) > -1);
       })
+
+    } else {
+      this.query = []
     }
   }
 }
