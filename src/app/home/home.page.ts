@@ -14,7 +14,7 @@ export class HomePage implements OnInit {
   data?: any;
   articles: Array<Object> = []
   autocomplete: Array<Object> = []
-  query: Array<Object> = []
+  query: Array<any> = []
 
   constructor(private newsService: NewsService, private router: Router) {
     this.InitializeItems()

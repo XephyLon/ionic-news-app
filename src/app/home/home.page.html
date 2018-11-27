@@ -12,7 +12,7 @@
     <ion-searchbar autocomplete="on" (ionInput)="getItems($event)" placeholder="Search" type="search" animated="true"></ion-searchbar>
     <ion-list>
       <ion-item *ngFor="let result of query" >
-        <ion-label (click)="onGoToNewsSinglePage(result)"> {{ result['title'] }} </ion-label>
+        <ion-label (click)="onGoToNewsSinglePage(result)"> {{ result.title }} </ion-label>
       </ion-item>
     </ion-list>
   </ion-toolbar>
